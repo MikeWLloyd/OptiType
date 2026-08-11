@@ -98,6 +98,7 @@ def test_cli_run_low_coverage_reports_reason_and_result_path(tmp_path):
             ["run", "-i", str(fq), "--dna", "-o", str(outdir), "--prefix", prefix],
         )
 
-    assert result.exit_code == 3
+    assert result.exit_code == 0
+    assert "warning" in result.output.lower()
     assert "low coverage" in result.output.lower()
     assert str(out_csv) in result.output

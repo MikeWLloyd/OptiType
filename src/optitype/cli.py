@@ -238,8 +238,8 @@ def run(
         click.echo(f"Coverage plot: {result.output_plot}")
 
     except LowCoverageError as e:
-        click.echo(str(e), err=True)
-        raise SystemExit(3) from None
+        click.secho(f"WARNING: {e}", fg="yellow", err=True)
+        return
     except Exception as e:
         raise click.ClickException(str(e)) from None
 
